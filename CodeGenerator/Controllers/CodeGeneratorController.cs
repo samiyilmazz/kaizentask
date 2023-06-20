@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace CodeGenerator.Controllers
+namespace KaizenCaseStudy.Controllers
 {
     [ApiController]
     [Route("[controller]")]
