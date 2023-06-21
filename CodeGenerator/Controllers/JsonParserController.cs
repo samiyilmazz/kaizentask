@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
+using Newtonsoft.Json.Linq;
 
 namespace KaizenCaseStudy.Controllers
 {
@@ -7,10 +7,10 @@ namespace KaizenCaseStudy.Controllers
     [Route("[controller]")]
     public class JsonParserController : ControllerBase
     {
-        [HttpGet("parser", Name = "GetJsonParser")]
-        public ActionResult<string> GetJsonParser()
+        [HttpPost("parser", Name = "GetJsonParser")]
+        public string[] GetJsonParser(SaasRequest[] saasRequest)
         {
-            return Ok();
+            return saasRequest[0].description.Split("\n");
         }
     }
 }
