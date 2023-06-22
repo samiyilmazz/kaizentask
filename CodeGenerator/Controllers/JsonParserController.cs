@@ -1,5 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json.Linq;
+﻿using Kaizen.Application.Contracts;
+using Microsoft.AspNetCore.Mvc;
 
 namespace KaizenCaseStudy.Controllers
 {
@@ -7,10 +7,17 @@ namespace KaizenCaseStudy.Controllers
     [Route("[controller]")]
     public class JsonParserController : ControllerBase
     {
-        [HttpPost("parser", Name = "GetJsonParser")]
-        public string[] GetJsonParser(SaasRequest[] saasRequest)
+        private readonly IParserService _parserService;
+
+        public JsonParserController(IParserService parserService)
         {
-            return saasRequest[0].description.Split("\n");
+            _parserService = parserService;
+        }
+
+        [HttpPost]
+        public async Task<List<string>> GetJsonParser(SaasRequest[] saasRequest, CancellationToken cancellationToken)
+        {
+           return await _parserService.ParseSaasJson(saasRequest, cancellationToken);
         }
     }
 }

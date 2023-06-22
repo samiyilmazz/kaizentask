@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Kaizen.Application.Contracts
 {
-    public interface IGenerateService
+    public interface IParserService
     {
-       Task<string> GetRandomCode(CancellationToken cancellationToken);
+        Task<List<string>> ParseSaasJson(SaasRequest[] saasRequests, CancellationToken cancellationToken);
     }
 }

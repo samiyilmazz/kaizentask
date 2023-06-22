@@ -10,7 +10,7 @@ namespace Kaizen.Application.Contracts.Implementations
     {
         private readonly HashSet<string> generatedCodeSet = new HashSet<string>();
 
-        public async Task<string> GetRandomCode()
+        public async Task<string> GetRandomCode(CancellationToken cancellationToken)
         {
             string generatedCode;
             do

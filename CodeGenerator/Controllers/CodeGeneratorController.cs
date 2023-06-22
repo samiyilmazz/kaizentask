@@ -14,10 +14,10 @@ namespace KaizenCaseStudy.Controllers
             _generateService = generateService;
         }
 
-        [HttpGet("random", Name = "GetRandomCode")]
-        public async Task<string> GetRandomCode()
+        [HttpGet]
+        public async Task<string> GetRandomCode(CancellationToken cancellationToken)
         {
-            return await _generateService.GetRandomCode();
+            return await _generateService.GetRandomCode(cancellationToken);
         }
     }
 }
